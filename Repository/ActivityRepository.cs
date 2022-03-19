@@ -70,7 +70,6 @@ public class ActivityRepository : ControllerBase,IActivityRepository
                       join address in _BaseDBContext.Addresses on x.AddressId equals address.Id
                       join user in _BaseDBContext.Users on x.OwnerUserId equals user.Id
                       join subctg in _BaseDBContext.SubCategories on x.SubCategoryId equals subctg.Id
-                      //sor join ctg in _BaseDBContext.Categories on subctg.CategoryId equals ctg.Id
                       where x.SubCategory.Category.Name == CategoryName && x.Visibility == true
                       orderby x.CreatedTime descending
                       select new Activity()

@@ -1,7 +1,7 @@
 public interface IUserRoleRepository
 {
     public UserRole CreateUserRole(string userName, int RoleId); 
-    public UserRole UpdateUserRole(string Username, int newRoleId, int oldRoleId); //sor --userId'sini almamak için UserRole userRole deseydim almak zorundaydim
+    public UserRole UpdateUserRole(string Username, int newRoleId, int oldRoleId);
     public void DeleteUserRole(string Username, int RoleId);
     public IEnumerable<UserRole> GetAllUserRoles();
     public IEnumerable<Role> GetRolesOfAnUserByEmail(string Email);

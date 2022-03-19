@@ -26,7 +26,7 @@ public class WishedActivityRepository : IWishedActivityRepository
         {
             _BaseDBContext.WishedActivites.Remove(wishedActivity);
             await _BaseDBContext.SaveChangesAsync();
-             //sor hangisi
+             
             /*
             User user = _BaseDBContext.Users.FirstOrDefault(x=>x.Username == UserName);
             wishedActivity = user.WishedActivities.FirstOrDefault(x=>x.ActivityId == ActivityId);

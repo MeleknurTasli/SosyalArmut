@@ -18,7 +18,7 @@ public class UserRoleRepository : IUserRoleRepository
         _BaseDBContext.SaveChanges();
         return userRole;
         
-        //sor hangisi
+        
         /*
         User user = _BaseDBContext.Users.FirstOrDefault(x => x.Username == userName);
         Role role= _BaseDBContext.Roles.FirstOrDefault(x=>x.Id == RoleId);

@@ -14,3 +14,4 @@ global using System.IO.Pipelines;
 global using Microsoft.AspNetCore.Mvc.Infrastructure;
 global using Microsoft.AspNetCore.Mvc.ModelBinding;
 global using System.Net.Http;
+global using System.Collections.Generic;

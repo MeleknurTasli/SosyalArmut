@@ -50,7 +50,7 @@ namespace Armut.Model
             {
                 _db.UserRoles.Add(new UserRole()
                 {
-                    UserId = Id,  //sor
+                    UserId = Id,  
                     RoleId = roleId
                 });
                 _db.SaveChanges();

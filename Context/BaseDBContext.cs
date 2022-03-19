@@ -57,7 +57,7 @@ public class BaseDBContext : DbContext
             entity.Property(e => e.ProfilePhoto);
             entity.HasOne(e=>e.Account).WithOne().HasForeignKey("User","AccountId");
             entity.HasOne(e=>e.Gender).WithMany(e=>e.Users).HasForeignKey(e=>e.GenderId);
-            entity.HasMany(e=>e.Roles).WithMany(e=>e.Users).UsingEntity(j=>j.ToTable("User_Role")); //sor hangisi
+            //entity.HasMany(e=>e.Roles).WithMany(e=>e.Users).UsingEntity(j=>j.ToTable("User_Role")); 
             entity.HasMany(e=>e.RecordedActivities).WithMany(e=>e.AllAttendantUsers).UsingEntity(j=>j.ToTable("User_Activity_Records"));
         });
 
@@ -95,7 +95,7 @@ public class BaseDBContext : DbContext
             entity.HasOne(e=>e.OwnerUser).WithMany(e => e.CreatedActivities).HasForeignKey(e => e.OwnerUserId); 
         });
 
-        modelBuilder.Entity<ActivityTimeTable>(entity => //sor4 many:many ara tablosu olcak mı --bir activity birden fazla time table sahip ama bir timetableIn birden fazla activity olabilir mi????
+        modelBuilder.Entity<ActivityTimeTable>(entity => 
         {
             entity.HasKey(e => e.Id);
             entity.Property(e => e.StartDate);
@@ -113,8 +113,7 @@ public class BaseDBContext : DbContext
             entity.HasOne(e=>e.Activity).WithMany(e=>e.TimeTable).HasForeignKey(e=>e.ActivityId);
         });
 
-        //bir userın birden fazla timetableı olabilir ve bir timetableın da birden fazla katılımcı user'ı olabilir
-        //sor1 bunun için de normal bir şekilde servis-repository yazıp sorgu yapabilir miyim???
+        
         modelBuilder.Entity<UserActivityTimeTable>().HasKey(x => new { x.UserId, x.ActivityTimeTableId });
         modelBuilder.Entity<UserActivityTimeTable>().HasOne<User>(x => x.User).WithMany(x => x.UserActivityTimeTables)
         .HasForeignKey(x => x.UserId);
@@ -122,8 +121,7 @@ public class BaseDBContext : DbContext
         .HasForeignKey(x => x.ActivityTimeTableId);
         modelBuilder.Entity<UserActivityTimeTable>().Property(e => e.IsUpComing);
 
-        //bir user birden fazla activiyeyi isteyebilir ve bir aktivite birden fazla user tarafından istenebilir??
-        //sor2 
+        
         modelBuilder.Entity<WishedActivity>(entity =>
         {
             entity.HasKey(e => e.Id);
@@ -131,8 +129,7 @@ public class BaseDBContext : DbContext
             entity.HasOne(e => e.Activity).WithMany(e => e.WishingUsers).HasForeignKey(e=>e.ActivityId);
         });
 
-        //bir user birden fazla aktiviteye puan verebilir ve bir aktivite birden fazla puan alabilir??
-        //sor3
+        
         modelBuilder.Entity<Ranking>(entity =>
         {
             entity.HasKey(e => e.Id);

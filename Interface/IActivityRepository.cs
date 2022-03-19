@@ -8,7 +8,7 @@ public interface IActivityRepository
     public Task<IEnumerable<Activity>> GetActivitiesByPriceLimits(double minPrice, double maxPrice);
     public Task<IEnumerable<Activity>> GetActivitiesByOwnerUsername(string Username);
     public Task<IEnumerable<Activity>> GetActivitiesByNeighbourhood(Neighbourhood Neighbourhood);
-    public Task<Activity> CreateActivity(CreateActivityDTO Activity);  //sor owner user Id
+    public Task<Activity> CreateActivity(CreateActivityDTO Activity); 
     public Task<Activity> UpdateActivity(UpdateActivityDTO Activity);
     public Task<ActionResult> DeleteActivity(int Id); 
     public Task<ActionResult> ChangeVisibilityOfActivity(int Id);
