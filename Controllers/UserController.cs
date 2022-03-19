@@ -41,7 +41,7 @@ public class UserController : ControllerBase
     }
 
     [HttpGet("Age")] //https://localhost:7293/User/Age?minage=20&maxage=25
-    public async Task<IEnumerable<UserDTO>> GetUsersByAgeLimits(string minAge, string maxAge)
+    public async Task<ActionResult<IEnumerable<UserDTO>>> GetUsersByAgeLimits(string minAge, string maxAge)
     {
         return await _UserService.GetUsersByAgeLimits(minAge, maxAge);
     }

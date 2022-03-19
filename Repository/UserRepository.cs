@@ -224,7 +224,7 @@ public class UserRepository : IUserRepository
         var users = (from x in _BaseDBContext.Users
         // join u in _BaseDBContext.UserRoles on x.Id equals u.UserId
         // join w in _BaseDBContext.WishedActivites on x.Id equals w.UserId
-                 where (DateTime.Now.Subtract(x.BirthDay).Days)/365 < maxAge && (DateTime.Now.Subtract(x.BirthDay).Days)/365 > minAge && x.Account.Visibility == true
+                 where DateTime.Now.AddYears(-x.BirthDay.Year).Year < maxAge && DateTime.Now.AddYears(-x.BirthDay.Year).Year > minAge && x.Account.Visibility == true
                  select new User()
                  {
                      Id = x.Id,

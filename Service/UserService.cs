@@ -105,7 +105,7 @@ public class UserService : ControllerBase, IUserService
         }
     }
 
-    public async Task<IEnumerable<UserDTO>> GetUsersByAgeLimits(string minAge, string maxAge)
+    public async Task<ActionResult<IEnumerable<UserDTO>>> GetUsersByAgeLimits(string minAge, string maxAge)
     {
         try
         {
@@ -116,11 +116,11 @@ public class UserService : ControllerBase, IUserService
              {
                   return ConvertToUserDTO(_UserRepository.GetUsersByAgeLimits(min, max));
              }
-             return null;
+             return BadRequest("Yaş limitlerini sayı olarak girin.");
         }
         catch
         {
-            return null;
+            throw;
         }
     }
 
