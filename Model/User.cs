@@ -6,7 +6,7 @@ namespace Armut.Model
         public string Username { get; set; }
         public string? FirstName { get; set; }
         public string? LastName { get; set; }
-        public int? Age { get; set; }
+        public DateTime BirthDay { get; set; }
         public string? ProfilePhoto { get; set; }
         public string? PhoneNumber { get; set; }
         public int AccountId { get; set; }
@@ -23,6 +23,8 @@ namespace Armut.Model
 
         public virtual List<ActivityTimeTable>? RecordedActivities { get; set; }
         public virtual List<Role>? Roles { get; set; }
+
+        public virtual List<Comment>? Comments { get; set; }
 
 
         public User()
@@ -63,7 +65,7 @@ namespace Armut.Model
             Username = _createUserDTO.Username;
             FirstName = _createUserDTO.FirstName;
             LastName = _createUserDTO.LastName;
-            Age = _createUserDTO.Age;
+            BirthDay = _createUserDTO.BirthDay;
             ProfilePhoto = _createUserDTO.ProfilePhoto;
             PhoneNumber = _createUserDTO.PhoneNumber;
             AccountId = _createUserDTO.AccountId;

@@ -19,6 +19,7 @@ public class BaseDBContext : DbContext
     //public DbSet<AttendedActivity>? AttendedActivities { get; set; }
     //public DbSet<UpComingActivity>? UpComingActivities { get; set; }
     public DbSet<UserActivityTimeTable>? UserActivityTimeTables { get; set; }
+    public DbSet<Comment>? Comments { get; set; }
 
 
     public DbSet<Country>? Countries { get; set; }
@@ -52,7 +53,7 @@ public class BaseDBContext : DbContext
             entity.Property(e => e.Username);
             entity.Property(e => e.FirstName);
             entity.Property(e => e.LastName);
-            entity.Property(e => e.Age);
+            entity.Property(e => e.BirthDay);
             entity.Property(e => e.PhoneNumber);
             entity.Property(e => e.ProfilePhoto);
             entity.HasOne(e=>e.Account).WithOne().HasForeignKey("User","AccountId");
@@ -151,6 +152,19 @@ public class BaseDBContext : DbContext
             entity.Property(e => e.Name);
             entity.Property(e => e.Visibility);
             entity.HasOne(e=>e.Category).WithMany(e=>e.SubCategories).HasForeignKey(e=>e.CategoryId);
+        });
+
+        modelBuilder.Entity<Comment>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+            entity.Property(e => e.Description);
+            entity.Property(e => e.Title);
+            entity.Property(e => e.Visibility);
+            entity.Property(e => e.EntryDate);
+            entity.Property(e => e.UserId);
+            entity.Property(e => e.ActivityId);
+            entity.HasOne(e=>e.User).WithMany(e=>e.Comments).HasForeignKey(e=>e.UserId);
+            entity.HasOne(e=>e.Activity).WithMany(e=>e.Comments).HasForeignKey(e=>e.ActivityId);
         });
 
 

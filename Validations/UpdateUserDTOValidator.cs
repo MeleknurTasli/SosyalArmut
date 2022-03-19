@@ -7,7 +7,7 @@ public class UpdateUserDTOValidator : AbstractValidator<UpdateUserDTO>
         RuleFor(x => x.Username).NotNull().NotEmpty().Must(UniqueUserName).WithMessage("Bu username kullanılmaktadır. Başka bir username bulunuz.");
         RuleFor(x => x.FirstName).NotNull().NotEmpty().MinimumLength(2).WithMessage("Geçerli bir ad giriniz.");
         RuleFor(x => x.LastName).NotNull().NotEmpty().MinimumLength(2).WithMessage("Geçerli bir soyad giriniz.");
-        RuleFor(x => x.Age).GreaterThan(12).WithMessage("Yaşınız 12den büyük olmalı.");
+        RuleFor(x => x.BirthDate).LessThanOrEqualTo(Convert.ToDateTime("01/01/2011")).WithMessage("Yaşınız 12den büyük olmalı.");
         RuleFor(x => x.GenderId).NotNull().Must(IsGenderIdExist).WithMessage("Gender bulunamadı.");
     }
     private bool UniqueUserName(string name)

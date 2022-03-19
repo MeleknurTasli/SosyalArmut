@@ -46,7 +46,7 @@ public class UserRepository : IUserRepository
                      Username = x.Username,
                      FirstName = x.FirstName,
                      LastName = x.LastName,
-                     Age = x.Age,
+                     BirthDay = x.BirthDay,
                      ProfilePhoto = x.ProfilePhoto,
                      PhoneNumber = x.PhoneNumber,
                      Account = new Account(){Email=x.Account.Email},
@@ -115,7 +115,7 @@ public class UserRepository : IUserRepository
                      Username = x.Username,
                      FirstName = x.FirstName,
                      LastName = x.LastName,
-                     Age = x.Age,
+                     BirthDay = x.BirthDay,
                      ProfilePhoto = x.ProfilePhoto,
                      PhoneNumber = x.PhoneNumber,
                      Account = new Account(){Email=x.Account.Email},
@@ -144,7 +144,7 @@ public class UserRepository : IUserRepository
                      Username = x.Username,
                      FirstName = x.FirstName,
                      LastName = x.LastName,
-                     Age = x.Age,
+                     BirthDay = x.BirthDay,
                      ProfilePhoto = x.ProfilePhoto,
                      PhoneNumber = x.PhoneNumber,
                      Account = new Account(){Email=x.Account.Email},
@@ -173,7 +173,7 @@ public class UserRepository : IUserRepository
                      Username = x.Username,
                      FirstName = x.FirstName,
                      LastName = x.LastName,
-                     Age = x.Age,
+                     BirthDay = x.BirthDay,
                      ProfilePhoto = x.ProfilePhoto,
                      PhoneNumber = x.PhoneNumber,
                      Account = new Account(){Email=x.Account.Email},
@@ -202,7 +202,7 @@ public class UserRepository : IUserRepository
                      Username = x.Username,
                      FirstName = x.FirstName,
                      LastName = x.LastName,
-                     Age = x.Age,
+                     BirthDay = x.BirthDay,
                      ProfilePhoto = x.ProfilePhoto,
                      PhoneNumber = x.PhoneNumber,
                      Account = new Account(){Email=x.Account.Email},
@@ -221,17 +221,17 @@ public class UserRepository : IUserRepository
 
     public IEnumerable<User> GetUsersByAgeLimits(int minAge, int maxAge)
     {
-         var users = (from x in _BaseDBContext.Users
+        var users = (from x in _BaseDBContext.Users
         // join u in _BaseDBContext.UserRoles on x.Id equals u.UserId
         // join w in _BaseDBContext.WishedActivites on x.Id equals w.UserId
-                 where x.Age < maxAge && x.Age > minAge && x.Account.Visibility == true
+                 where (DateTime.Now.Subtract(x.BirthDay).Days)/365 < maxAge && (DateTime.Now.Subtract(x.BirthDay).Days)/365 > minAge && x.Account.Visibility == true
                  select new User()
                  {
                      Id = x.Id,
                      Username = x.Username,
                      FirstName = x.FirstName,
                      LastName = x.LastName,
-                     Age = x.Age,
+                     BirthDay = x.BirthDay,
                      ProfilePhoto = x.ProfilePhoto,
                      PhoneNumber = x.PhoneNumber,
                      Account = new Account(){Email=x.Account.Email},
@@ -254,7 +254,7 @@ public class UserRepository : IUserRepository
         user.Username = userDTO.Username;
         user.FirstName = userDTO.FirstName;
         user.LastName = userDTO.LastName;
-        user.Age = userDTO.Age;
+        user.BirthDay = userDTO.BirthDate;
         user.ProfilePhoto = userDTO.ProfilePhoto;
         user.PhoneNumber = userDTO.PhoneNumber;
         user.GenderId = userDTO.GenderId;

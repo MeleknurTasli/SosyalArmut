@@ -27,7 +27,7 @@ namespace Armut.Model
 
         public double? Point { get; set; }
 
-
+        public virtual List<Comment>? Comments { get; set; }
 
 
         ////public virtual IEnumerable<PriceTable>? PriceTable { get; set; }

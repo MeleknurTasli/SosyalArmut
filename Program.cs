@@ -45,6 +45,8 @@ builder.Services.AddScoped<IUserActivityTimeTableRepository, UserActivityTimeTab
 builder.Services.AddScoped<IUserActivityTimeTableService, UserActivityTimeTableService>();
 builder.Services.AddScoped<IActivityTimeTableRepository, ActivityTimeTableRepository>();
 builder.Services.AddScoped<IActivityTimeTableService, ActivityTimeTableService>();
+builder.Services.AddScoped<ICommentRepository, CommentRepository>();
+builder.Services.AddScoped<ICommentService, CommentService>();
 
 builder.Services.AddScoped<ICityRepository, CityRepository>();
 builder.Services.AddScoped<ICityService, CityService>();

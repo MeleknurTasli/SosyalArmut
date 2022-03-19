@@ -3,7 +3,7 @@ public class UserDTO
     public string? Username { get; set; }
     public string? FirstName { get; set; }
     public string? LastName { get; set; }
-    public int? Age { get; set; }
+    public DateTime BirthDay { get; set; }
     public string? ProfilePhoto { get; set; }
     public string? PhoneNumber { get; set; }
 
@@ -23,7 +23,7 @@ public class UserDTO
         Username = _User.Username;
         FirstName = _User.FirstName;
         LastName = _User.LastName;
-        Age = _User.Age;
+        BirthDay = _User.BirthDay;
         ProfilePhoto = _User.ProfilePhoto;
         PhoneNumber = _User.PhoneNumber;
         Account = _User.Account;

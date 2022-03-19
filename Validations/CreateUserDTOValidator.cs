@@ -7,7 +7,7 @@ public class CreateUserDTOValidator : AbstractValidator<CreateUserDTO>
         RuleFor(x => x.Username).NotNull().NotEmpty().Must(UniqueUserName).WithMessage("Bu username kullanılmaktadır. Başka bir username bulunuz.");
         RuleFor(x => x.FirstName).NotNull().NotEmpty().MinimumLength(2).WithMessage("Geçerli bir ad giriniz.");
         RuleFor(x => x.LastName).NotNull().NotEmpty().MinimumLength(2).WithMessage("Geçerli bir soyad giriniz.");
-        RuleFor(x => x.Age).GreaterThan(12).WithMessage("Yaşınız 12den büyük olmalı.");
+        RuleFor(x => x.BirthDay).LessThanOrEqualTo(Convert.ToDateTime("01/01/2011")).WithMessage("Yaşınız 12den büyük olmalı.");
         RuleFor(x => x.AccountId).NotNull().Must(IsAccountIdExist).Must(UniqueAccountID).WithMessage("Geçerli ya da farklı bir account id girin.");
         RuleFor(x => x.GenderId).NotNull().Must(IsGenderIdExist).WithMessage("Gender bulunamadı.");
         RuleFor(x => x.RoleIds).NotNull().NotEmpty().WithMessage("Role atanması yapılmalıdır.");
