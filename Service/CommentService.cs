@@ -11,7 +11,7 @@ public class CommentService : ControllerBase, ICommentService
         try
         {
             Comment comment = _commentRepository.CreateComment(createCommentDTO);
-            if (comment != null)
+            if (comment == null)
             {
                 return BadRequest("UserId ve ActivityId kontrol ediniz.");
             }
@@ -54,7 +54,7 @@ public class CommentService : ControllerBase, ICommentService
         try
         {
             Comment comment = _commentRepository.GetCommentById(Id);
-            if (comment != null)
+            if (comment == null)
             {
                 return BadRequest("Bu Id ile bir comment mevcut değildir..");
             }

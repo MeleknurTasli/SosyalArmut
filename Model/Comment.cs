@@ -20,7 +20,7 @@ public class Comment
         Description = createCommentDTO.Description;
         Title = createCommentDTO.Title;
         Visibility = true;
-        EntryDate = createCommentDTO.EntryDate;
+        EntryDate = DateTime.Now;
         UserId = createCommentDTO.UserId;
         ActivityId = createCommentDTO.ActivityId;
     }
